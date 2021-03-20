@@ -10,7 +10,7 @@ const pptr_launch = async ()=>{
   launchoptions.headless = true;
   launchoptions.defaultViewport=null;
   launchoptions.ignoreDefaultArgs=['--enable-automation'];
-  launchoptions.args=['--start-maximized'];
+  launchoptions.args=['--start-maximized','--no-sandbox'];
   let browser = await puppeteer.launch(launchoptions);
   return browser
 }
@@ -56,9 +56,10 @@ const searchSite = async (input_text, browser, site_name)=>{
       result:'#searchResultBox > div:nth-child(2) > div > table > tbody > tr > td:nth-child(2) > table',
       post_process:(raw_html)=>{
         if(raw_html==''){
-          raw_html='无结果'
+          return raw_html='无结果'
         }
-        return raw_html
+        const raw_html_removeblank = raw_html.replace(/\n +/mg, '');
+        return raw_html_removeblank
       }
     }
   }
@@ -68,8 +69,8 @@ const searchSite = async (input_text, browser, site_name)=>{
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36');
   await page.goto(site.address, options={'waitUntil': 'networkidle0'}) 
   const inputElement = await page.$(site.input)
-  const placehoder = await page.evaluate(el=>el.placeholder,site.input);
-  console.log(`${placehoder}`);
+  // const placehoder = await page.evaluate(el=>el.placeholder,site.input);
+  // // console.log(`${placehoder}`);
   await inputElement.type(input_text)//, delay=20
   // await page.waitForTimeout(1000)
   await Promise.all([

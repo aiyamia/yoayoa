@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/home.css?=2.0' />
+  </head>
+  <body>
+    <div class="input_area">
+      <input type="text" id="search_txt" placeholder="Search for title, author, ISBN, publisher, md5..">
+      <button type="submit" id="search_sub">一键搜索</button>
+    </div>
+    <div id="result">
+      <div id="libgen">   <div class="title"> LibGen     </div> <div id="libgen_result">    </div></div>
+      <div id="zlib">     <div class="title"> Zlib       </div> <div id="zlib_result">      </div></div>
+      <div id="archive">  <div class="title"> Archive    </div> <div id="archive_result">   </div></div>
+      <div id="worldcat"> <div class="title"> Worldcat   </div> <div id="worldcat_result">  </div></div>
+      <div id="hathi">    <div class="title"> HathiTrust </div> <div id="hathi_result">     </div></div>
+      <div id="google">   <div class="title"> Google     </div> <div id="google_result">    </div></div>
+    </div>
+    <script charset="utf-8" src="/javascripts/home.js?=3.0"></script>
+  </body>
+</html>
