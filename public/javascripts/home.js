@@ -2,7 +2,7 @@ document.getElementById("search_sub").addEventListener("click", function() {
   inp_ele=document.getElementById("search_txt");
   if(/\w/.test(inp_ele.value)){
     console.log('输入有效');
-    const url = `http://${document.domain}:${location.port}/api`;
+    const url = `https://${document.domain}:${location.port}/api`;
     search_req(url,'worldcat');
     search_req(url,'libgen');
     search_req(url,'zlib');
