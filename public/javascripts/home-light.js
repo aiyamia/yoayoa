@@ -11,7 +11,7 @@ var light_app = new Vue({
         const input_area = document.getElementsByClassName("input_area")[0];
         input_area.style.cssText = "margin-top:2rem;margin-bottom:2rem;";
         const query_string=encodeURI(this.input);
-        const url_libgen=`http://libgen.rs/search.php?req=${query_string}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def`;
+        const url_libgen=`https://libgen.is/search.php?req=${query_string}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def`;
         const url_zlib=`https://2lib.org/s/?q=${query_string}`;
         const q_string=encodeURI(`title:(${this.input}) AND mediatype:(texts)`);
         const url_archive=`https://archive.org/search.php?query=${q_string}`;
