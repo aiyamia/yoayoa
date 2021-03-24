@@ -3,14 +3,30 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/home-light.css?=1.0' />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div class="input_area">
-      <input type="text" id="search_txt" placeholder="Search for title, author, ISBN, publisher, md5..">
-      <button type="submit" id="search_sub">一键搜索</button>
+    <div class="info">
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
     </div>
-    <script charset="utf-8" src="/javascripts/home-light.js?=1.0"></script>
+    <div id="app_light">
+        <div class="input_area">
+          <input type="text" v-model="input" id="search_txt" placeholder="Search for title, author, ISBN, publisher, md5..">
+          <button type="submit" id="search_sub" @click="showResults">一键搜索</button>
+        </div>
+        <div class="result">
+          <ul class="tab">
+            <li v-for="site in english_sites">
+              <button class="tablinks" v-bind:id= "site.name+'_tag'" @click="openSite(event, site.name)">{{site.name}}</button>
+            </li>
+          </ul>
+          <div v-for="site in english_sites" v-bind:id= "site.name" class="tabcontent">
+            <iframe v-bind:src="site.src" frameborder="0"></iframe>
+          </div>
+        </div>
+        
+    </div>
+    <script charset="utf-8" src="/javascripts/home-light.js?=2.0"></script>
   </body>
 </html>
