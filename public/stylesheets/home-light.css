@@ -1,0 +1,36 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.input_area {
+  margin: 10rem auto;
+  text-align: center;
+}
+.input_area > button {
+  border:1px solid rgb(196, 187, 187);
+  border-radius: 0.5rem;
+  background-color: rgb(26, 116, 233);
+  color: aliceblue;
+  font-size:150%;
+  letter-spacing:0.2rem;
+  width: 8rem;
+  height:3.5rem;
+}
+
+.input_area > button:hover{
+  background: darkblue;
+  cursor: pointer;
+}
+
+.input_area > input {
+  width:30%;
+  height:3rem;
+  font-size:120%;
+  line-height: 1.5rem;
+  margin-right: 1rem;
+}
