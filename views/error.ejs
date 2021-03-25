@@ -1,3 +1,14 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<h1 style="text-align: center;margin-top: 20rem;margin-bottom: 20rem;font-weight: bold;">
+  这里什么都没有，你是不是想去
+  <a style="text-decoration:none;color:rgb(83, 204, 158);margin-left: 0.5rem;margin-right: 1rem" href="https://yoayoa.ml">
+    yoayoa.ml</a>？<span id="fun">:P</span></h1>
+<script>
+  document.getElementById("fun").addEventListener("click", ()=>{
+    const el = document.getElementById("fun");
+    if(el.textContent == ":P"){
+      el.textContent =":|";
+    }else{
+      el.textContent =":P";
+    }
+  },false);
+</script>
