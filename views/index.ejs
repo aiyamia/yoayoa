@@ -2,21 +2,31 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/home.css?=2.0' />
+    <link rel='stylesheet' href='/stylesheets/home.css?=1.0' />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
   <body>
-    <div class="input_area">
-      <input type="text" id="search_txt" placeholder="Search for title, author, ISBN, publisher, md5..">
-      <button type="submit" id="search_sub">一键搜索</button>
+    <div class="info">
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
     </div>
-    <div id="result">
-      <div id="libgen">   <div class="title"> LibGen     </div> <div id="libgen_result">    </div></div>
-      <div id="zlib">     <div class="title"> Zlib       </div> <div id="zlib_result">      </div></div>
-      <div id="archive">  <div class="title"> Archive    </div> <div id="archive_result">   </div></div>
-      <div id="worldcat"> <div class="title"> Worldcat   </div> <div id="worldcat_result">  </div></div>
-      <div id="hathi">    <div class="title"> HathiTrust </div> <div id="hathi_result">     </div></div>
-      <div id="google">   <div class="title"> Google     </div> <div id="google_result">    </div></div>
+    <div id="app">
+        <div class="input_area">
+          <input type="text" v-model="input" id="search_txt" placeholder="Search for title, author, ISBN, publisher, md5..">
+          <button type="submit" id="search_sub" @click="showResults">一键搜索</button>
+        </div>
+        <div class="result">
+          <ul class="tab">
+            <li v-for="site in english_sites">
+              <button class="tablinks" v-bind:id= "site.name+'_tag'" @click="openSite(event, site.name)">{{site.name}}</button>
+            </li>
+          </ul>
+          <div v-for="site in english_sites" v-bind:id= "site.name" class="tabcontent">
+            <iframe v-bind:src="site.src" frameborder="0"></iframe>
+          </div>
+        </div>
+        
     </div>
-    <script charset="utf-8" src="/javascripts/home.js?=3.0"></script>
+    <script charset="utf-8" src="/javascripts/home.js?=1.0"></script>
   </body>
 </html>
