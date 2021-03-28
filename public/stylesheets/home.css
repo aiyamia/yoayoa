@@ -1,4 +1,15 @@
+:root {
+  --tab-pad:0.5rem;
+  --tab-height:5vh;
+}
+* {
+  outline: none;
+}
+html {
+  font-size: 1.08vw;
+}
 body {
+  margin: 0;
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -8,13 +19,18 @@ a {
 }
 
 .input_area {
-  margin: 20rem auto;
-  text-align: center;
+  position: fixed;
+  top: 45vh;
+  left: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
 }
-.input_area > button {
-  border:1px solid rgb(196, 187, 187);
+.input_area button {
+  border:none;
   border-radius: 0.5rem;
-  background-color: rgb(26, 116, 233);
+  background-color: rgb(75, 76, 78);
   color: aliceblue;
   font-size:150%;
   letter-spacing:0.2rem;
@@ -22,39 +38,46 @@ a {
   height:3.5rem;
 }
 
-.input_area > button:hover{
-  background: darkblue;
+.input_area button:hover{
+  background: black;
   cursor: pointer;
 }
 
-.input_area > input {
-  width:30%;
+.input_area input {
+  width:30vw;
   height:3rem;
   font-size:120%;
   line-height: 1.5rem;
   margin-right: 1rem;
+  text-indent:0.5vw;
 }
 
 /* Style the tab */
 .tab {
+  padding: var(--tab-pad);
   margin: 0;
-  padding: 0;
   list-style-type: none;
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  height: var(--tab-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 1rem 0.5rem rgb(0 0 0 / 20%) inset;
 }
+
 ul.tab li {
   float: left;
 }
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  border: black;
+  border-radius: 0.5rem;
+  background: #eee;
+  margin-right: 0.2rem;
   transition: 0.3s;
 }
 
@@ -66,27 +89,51 @@ ul.tab li {
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
+  font-size: xx-large;
 }
 
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+  border: none;
 }
 
 iframe {
   width: 100%;
-  height: 50rem;
+  height: calc(100vh - var(--tab-pad) - 2 * var(--tab-height));
+  border: none;
+}
+.info {
+  margin-left: 4.5rem;
+  margin-top: 2rem;
 }
 .info h1{
-  position: absolute;
-  left: 5rem;
-  top: 1rem;
+  margin: 0 auto;
 }
 .info p{
-  position: absolute;
-  left: 5rem;
-  top: 4rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+  color: lightgray;
+}
+.result{
+  display: none;
+}
+.eye {
+  width: 7vw;
+  height: 7vw;
+  border-radius: 3rem;
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
+}
+.to-hide {
+  max-width: 40rem;
+  overflow: hidden;
+  margin:0;
+  padding: 1rem;
+  transition: 0.3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#search_txt, #search_sub {
+  box-shadow: 1px 5px 0.1rem 0.1rem rgb(0 0 0 / 20%), 1px 5px 0.1rem 0.1rem rgb(0 0 0 / 19%) !important;
 }

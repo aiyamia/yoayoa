@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='/images/favicon.ico' type='image/x-icon'/ >
+    <link rel="shortcut icon" href="/public/images/favicon.ico">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/home.css?=1.0' />
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
   <body>
-    <div class="info">
-      <h1><%= title %></h1>
-      <p>有啊有啊都有啊</p>
-    </div>
     <div id="app">
-        <div class="input_area">
-          <input type="text" v-model="input" id="search_txt" placeholder="Search for title, author, ISBN, publisher, md5..">
-          <button type="submit" id="search_sub" @click="showResults">一键搜索</button>
-        </div>
-        <div class="result">
-          <ul class="tab">
-            <li v-for="site in english_sites">
-              <button class="tablinks" v-bind:id= "site.name+'_tag'" @click="openSite(event, site.name)">{{site.name}}</button>
-            </li>
-          </ul>
-          <div v-for="site in english_sites" v-bind:id= "site.name" class="tabcontent">
-            <iframe v-bind:src="site.src" frameborder="0"></iframe>
-          </div>
+      <div class="head">
+        <div class="info">
+          <h1><%= title %></h1>
+          <p>有啊有啊都有啊</p>
         </div>
         
+        <div class="input_area">
+          <img src="/images/favicon.ico" alt="" class="eye" @click="wink">
+          <div class="to-hide">
+            <input type="text" v-model="input" id="search_txt" @keyup.enter="showResults" placeholder="Search for title, author, ISBN, publisher, md5..">
+            <button type="submit" id="search_sub" @click="showResults">一键搜索</button>
+          </div>
+        </div>
+      </div>
+      <div class="result">
+        <ul class="tab">
+          <li v-for="site in english_sites">
+            <button class="tablinks" v-bind:id= "site.name+'_tab'" @click="openSite(event, site.name)">{{site.name}}</button>
+          </li>
+        </ul>
+
+        <iframe v-for="site in english_sites" v-bind:id= "site.name" class="tabcontent" v-bind:src="site.src" v-bind:onload="iframeLoad(site.name)"></iframe>
+
+      </div>
     </div>
-    <script charset="utf-8" src="/javascripts/home.js?=1.0"></script>
+    <script charset="utf-8" src="/javascripts/home.js?=2.0"></script>
   </body>
 </html>

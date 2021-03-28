@@ -1,3 +1,4 @@
+
 var light_app = new Vue({
   el: '#app',
   data: {
@@ -6,12 +7,17 @@ var light_app = new Vue({
   },
   methods:{
     showResults(){
-      if(/\w/.test(this.input)){
+      if(/\w|[\u4e00-\u9fa5]/.test(this.input)){
         console.log('输入有效');
-        const input_area = document.getElementsByClassName("input_area")[0];
-        input_area.style.cssText = "margin-top:2rem;margin-bottom:2rem;";
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        document.getElementsByClassName("info")[0].style.display="none";
+        this.wink();
+        const head = document.getElementsByClassName("head")[0];
+        head.style.cssText = "display:flex;justify-content:center;align-items:center;";
+        document.getElementsByClassName('result')[0].style.display = "block";
         const query_string=encodeURI(this.input);
-        const url_libgen=`https://libgen.is/search.php?req=${query_string}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def`;
+        const url_libgen=`http://libgen.rs/search.php?req=${query_string}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def`;
         const url_zlib=`https://2lib.org/s/?q=${query_string}`;
         const q_string=encodeURI(`title:(${this.input}) AND mediatype:(texts)`);
         const url_archive=`https://archive.org/search.php?query=${q_string}`;
@@ -24,10 +30,9 @@ var light_app = new Vue({
           {name:'hathitrust',src:url_hathi},
           {name:'worldcat',src:url_worldcat}
         ]
-        const tabs_bar = document.getElementsByClassName("tab")[0];
         setTimeout(function(){
-          tabs_bar.firstChild.firstChild.click();
-        },1000);
+          document.getElementById("libgen_tab").click();
+        },2000);
       }else{
         console.log('输入有误');
         this.input=""
@@ -39,6 +44,7 @@ var light_app = new Vue({
       }
     },
     openSite(evt, siteName) {
+      // Declare all variables
       var i, tabcontent, tablinks;
     
       // Get all elements with class="tabcontent" and hide them
@@ -56,6 +62,32 @@ var light_app = new Vue({
       // Show the current tab, and add an "active" class to the button that opened the tab
       document.getElementById(siteName).style.display = "block";
       evt.currentTarget.className += " active";
+    },
+    wink(){
+      var tohide = document.getElementsByClassName("to-hide")[0];
+      if (tohide.style.maxWidth != "0px") {
+        tohide.style.maxWidth = "0";
+        tohide.style.padding = "0";
+        const input_area = document.getElementsByClassName("input_area")[0];
+        input_area.style.cssText = "margin:0;top:17vh;left:95vw;transform: rotate(-130deg);";
+      } else {
+        const input_area = document.getElementsByClassName("input_area")[0];
+        input_area.style.cssText = "top: 45vh;left: 25vw;";
+        setTimeout(function(){
+          tohide.style.maxWidth = "40rem";
+          tohide.style.padding = "1rem";
+          const input = tohide.firstChild
+          input.focus()
+          input.select();
+        },100);
+      }
+    },
+    iframeLoad(siteName){
+      if(siteName==="worldcat"){
+        console.log('天青色等烟雨');
+        // document.getElementById("#onetrust-consent-sdk").remove();
+      }
     }
   }
 });
+
