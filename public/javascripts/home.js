@@ -22,7 +22,7 @@ var light_app = new Vue({
         const q_string=encodeURI(`title:(${this.input}) AND mediatype:(texts)`);
         const url_archive=`https://archive.org/search.php?query=${q_string}`;
         const url_hathi=`https://catalog.hathitrust.org/Search/Home?lookfor=${query_string}&searchtype=title&ft=&setft=false`;
-        const url_worldcat=`https://www.worldcat.org/search?qt=worldcat_org_all&q=${query_string}`;
+        const url_worldcat=`/proxy/worldcat/search?qt=worldcat_org_all&q=${query_string}`;
         this.english_sites=[
           {name:'libgen',src:url_libgen},
           {name:'zlib',src:url_zlib},
