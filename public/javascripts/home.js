@@ -29,9 +29,9 @@ var light_app = new Vue({
           {name:'archive',src:url_archive},
           {name:'hathitrust',src:url_hathi},
           {name:'worldcat',src:url_worldcat}
-        ]
+        ];
         setTimeout(function(){
-          document.getElementById("libgen_tab").click();
+          document.getElementById("worldcat_tab").click();
         },2000);
       }else{
         console.log('输入有误');
@@ -39,55 +39,49 @@ var light_app = new Vue({
         inp_ele=document.getElementById("search_txt");
         inp_ele.placeholder="请输入带文字字符的内容~"
         setTimeout(function(){
-          inp_ele.placeholder="Search for title, author, ISBN, publisher, md5.."
+          inp_ele.placeholder="Search for title"
         },1000);
       }
     },
     openSite(evt, siteName) {
-      // Declare all variables
       var i, tabcontent, tablinks;
     
-      // Get all elements with class="tabcontent" and hide them
       tabcontent = document.getElementsByClassName("tabcontent");
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
       }
-    
-      // Get all elements with class="tablinks" and remove the class "active"
+
       tablinks = document.getElementsByClassName("tablinks");
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
       }
-    
-      // Show the current tab, and add an "active" class to the button that opened the tab
+
       document.getElementById(siteName).style.display = "block";
       evt.currentTarget.className += " active";
     },
     wink(){
       var tohide = document.getElementsByClassName("to-hide")[0];
+      
       if (tohide.style.maxWidth != "0px") {
         tohide.style.maxWidth = "0";
         tohide.style.padding = "0";
         const input_area = document.getElementsByClassName("input_area")[0];
         input_area.style.cssText = "margin:0;top:17vh;left:95vw;transform: rotate(-130deg);";
       } else {
+        const max_width_of_hide = getComputedStyle(tohide).getPropertyValue('--max-width-of-hide');
+        const padding_hide = getComputedStyle(tohide).getPropertyValue('--padding-hide');
         const input_area = document.getElementsByClassName("input_area")[0];
-        input_area.style.cssText = "top: 45vh;left: 25vw;";
+        const top_input_area = getComputedStyle(input_area).getPropertyValue('--top-input_area');
+        const left_input_area = getComputedStyle(input_area).getPropertyValue('--left-input_area');
+        input_area.style.cssText = `top: ${top_input_area};left: ${left_input_area};`;
         setTimeout(function(){
-          tohide.style.maxWidth = "40rem";
-          tohide.style.padding = "1rem";
+          tohide.style.maxWidth = max_width_of_hide;
+          tohide.style.padding = padding_hide;
           const input = tohide.firstChild
           input.focus()
           input.select();
         },100);
       }
-    },
-    iframeLoad(siteName){
-      if(siteName==="worldcat"){
-        console.log('天青色等烟雨');
-        // document.getElementById("#onetrust-consent-sdk").remove();
-      }
     }
   }
 });
-

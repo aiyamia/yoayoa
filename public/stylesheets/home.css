@@ -1,7 +1,25 @@
 :root {
   --tab-pad:0.5rem;
   --tab-height:5vh;
+
+  --eye-size:7vw;
+  
+  --width-input:30vw;
+  --height-input:3rem;
+  --margin-right-input:1rem;
+
+  --width-button:8rem;
+  --height-button:3.5rem;
+  --margin-top-button:0;
+
+  --max-width-of-hide:calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
+  --margin-top-hide:0vw;
+  --padding-hide:1rem;
+
+  --top-input_area:calc(50vh - 0.5 * var(--eye-size));
+  --left-input_area:calc(50vw - 0.5 * (var(--eye-size) + var(--margin-right-input) + 2 * var(--padding-hide) + var(--width-input) + var(--width-button)));
 }
+
 * {
   outline: none;
 }
@@ -20,8 +38,8 @@ a {
 
 .input_area {
   position: fixed;
-  top: 45vh;
-  left: 25vw;
+  top: var(--top-input_area);
+  left: var(--left-input_area);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,8 +52,8 @@ a {
   color: aliceblue;
   font-size:150%;
   letter-spacing:0.2rem;
-  width: 8rem;
-  height:3.5rem;
+  width: var(--width-button);
+  height:var(--height-button);
 }
 
 .input_area button:hover{
@@ -44,15 +62,14 @@ a {
 }
 
 .input_area input {
-  width:30vw;
-  height:3rem;
+  width:var(--width-input);
+  height:var(--height-input);
   font-size:120%;
   line-height: 1.5rem;
-  margin-right: 1rem;
+  margin-right: var(--margin-right-input);
   text-indent:0.5vw;
 }
 
-/* Style the tab */
 .tab {
   padding: var(--tab-pad);
   margin: 0;
@@ -68,7 +85,7 @@ a {
 ul.tab li {
   float: left;
 }
-/* Style the buttons that are used to open the tab content */
+
 .tab button {
   float: left;
   border: none;
@@ -81,18 +98,15 @@ ul.tab li {
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
   font-size: xx-large;
 }
 
-/* Style the tab content */
 .tabcontent {
   display: none;
   border: none;
@@ -119,16 +133,16 @@ iframe {
   display: none;
 }
 .eye {
-  width: 7vw;
-  height: 7vw;
-  border-radius: 3rem;
+  width: var(--eye-size);
+  height: var(--eye-size);
+  border-radius: calc(0.5 * var(--eye-size));
   box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
 }
 .to-hide {
-  max-width: 40rem;
+  max-width: var(--max-width-of-hide);
   overflow: hidden;
   margin:0;
-  padding: 1rem;
+  padding: var(--padding-hide);
   transition: 0.3s ease-out;
   display: flex;
   justify-content: center;
@@ -136,4 +150,105 @@ iframe {
 }
 #search_txt, #search_sub {
   box-shadow: 1px 5px 0.1rem 0.1rem rgb(0 0 0 / 20%), 1px 5px 0.1rem 0.1rem rgb(0 0 0 / 19%) !important;
+}
+
+
+
+@media only screen and (max-width: 300px) {
+  :root {
+    --eye-size:18vw;
+
+    --height-input: 10vw;
+    --width-input: 58vw;
+    --margin-right-input:0;
+
+    --margin-top-button:2vw;
+    --height-button: 10vw;
+    --width-button: 40vw;
+
+    --margin-top-hide:5vw;
+    --max-width-of-hide: var(--width-input);
+
+    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + var(--margin-top-button) + 2 * var(--padding-hide) + var(--height-input) + var(--height-button)));
+    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + max(var(--width-input) , var(--width-button))));
+  }
+
+  .to-hide{
+    flex-direction: column;
+    margin-top: var(--margin-top-hide);
+  }
+  .to-hide > button{
+    margin-top: var(--margin-top-button);
+  }
+  .input_area{
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 300px) and (max-width: 600px) {
+  :root {
+    --eye-size:18vw;
+    
+    --height-input: 10vw;
+    --width-input: 58vw;
+    --margin-right-input:0;
+    --margin-top-button:2vw;
+    --height-button: 10vw;
+    --width-button: 40vw;
+    --margin-top-hide:5vw;
+    --max-width-of-hide: var(--width-input);
+    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + var(--margin-top-button) + 2 * var(--padding-hide) + var(--height-input) + var(--height-button)));
+    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + max(var(--width-input) , var(--width-button))));
+  }
+  .to-hide{
+    flex-direction: column;
+    margin-top: var(--margin-top-hide);
+  }
+  .to-hide > button{
+    margin-top: var(--margin-top-button);
+  }
+  .input_area{
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1100px){
+  :root {
+    --eye-size:12vw;
+    
+    --height-input: 7vw;
+    --width-input: 50vw;
+    --height-button: 8vw;
+    --width-button: 20vw;
+
+    --margin-top-hide:5vw;
+    --max-width-of-hide:calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
+
+    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + max(var(--height-input) , var(--height-button))));
+    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--margin-right-input) + var(--width-input) + var(--width-button)));
+  }
+  .input_area{
+    flex-direction: column;
+  }
+
+}
+
+
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+  :root {
+    --eye-size:9vw;
+    
+    --height-input: 5vw;
+    --width-input: 45vw;
+    --height-button: 6vw;
+    --width-button: 15vw;
+
+    --margin-top-hide:5vw;
+    --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
+
+    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + max(var(--height-input) , var(--height-button))));
+    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--margin-right-input) + var(--width-input) + var(--width-button)));
+  }
+  .input_area{
+    flex-direction: column;
+  }
 }

@@ -6,7 +6,7 @@
     <link rel='icon' href='/images/favicon.ico' type='image/x-icon'/ >
     <link rel="shortcut icon" href="/public/images/favicon.ico">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/home.css?=20210329' />
+    <link rel='stylesheet' href='/stylesheets/home.css?=2.0' />
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </head>
   <body>
@@ -20,7 +20,7 @@
         <div class="input_area">
           <img src="/images/favicon.ico" alt="" class="eye" @click="wink">
           <div class="to-hide">
-            <input type="text" v-model="input" id="search_txt" @keyup.enter="showResults" placeholder="Search for title, author, ISBN, publisher, md5..">
+            <input type="text" v-model="input" id="search_txt" @keyup.enter="showResults" placeholder="Search for title">
             <button type="submit" id="search_sub" @click="showResults">一键搜索</button>
           </div>
         </div>
@@ -32,10 +32,10 @@
           </li>
         </ul>
 
-        <iframe v-for="site in english_sites" v-bind:id= "site.name" class="tabcontent" v-bind:src="site.src" v-bind:onload="iframeLoad(site.name)"></iframe>
+        <iframe v-for="site in english_sites" v-bind:id= "site.name" class="tabcontent" v-bind:src="site.src"></iframe>
 
       </div>
     </div>
-    <script charset="utf-8" src="/javascripts/home.js?=20210329"></script>
+    <script charset="utf-8" src="/javascripts/home.js?=2.0"></script>
   </body>
 </html>
