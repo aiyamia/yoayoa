@@ -12,12 +12,12 @@
   --height-button:3.5rem;
   --margin-top-button:0;
 
-  --max-width-of-hide:calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
+  --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
   --margin-top-hide:0vw;
   --padding-hide:1rem;
 
-  --top-input_area:calc(50vh - 0.5 * var(--eye-size));
-  --left-input_area:calc(50vw - 0.5 * (var(--eye-size) + var(--margin-right-input) + 2 * var(--padding-hide) + var(--width-input) + var(--width-button)));
+  --top-input_area: calc(50vh - 0.5 * var(--eye-size));
+  --left-input_area: calc(50vw - 0.5 * (var(--eye-size) + var(--margin-right-input) + 2 * var(--padding-hide) + var(--width-input) + var(--width-button)));
 }
 
 * {
@@ -170,7 +170,7 @@ iframe {
     --max-width-of-hide: var(--width-input);
 
     --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + var(--margin-top-button) + 2 * var(--padding-hide) + var(--height-input) + var(--height-button)));
-    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + max(var(--width-input) , var(--width-button))));
+    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--width-input)));
   }
 
   .to-hide{
@@ -197,7 +197,7 @@ iframe {
     --margin-top-hide:5vw;
     --max-width-of-hide: var(--width-input);
     --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + var(--margin-top-button) + 2 * var(--padding-hide) + var(--height-input) + var(--height-button)));
-    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + max(var(--width-input) , var(--width-button))));
+    --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--width-input)));
   }
   .to-hide{
     flex-direction: column;
@@ -221,9 +221,9 @@ iframe {
     --width-button: 20vw;
 
     --margin-top-hide:5vw;
-    --max-width-of-hide:calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
+    --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
 
-    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + max(var(--height-input) , var(--height-button))));
+    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + var(--height-button)));
     --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--margin-right-input) + var(--width-input) + var(--width-button)));
   }
   .input_area{
@@ -245,7 +245,7 @@ iframe {
     --margin-top-hide:5vw;
     --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
 
-    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + max(var(--height-input) , var(--height-button))));
+    --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + var(--height-button)));
     --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--margin-right-input) + var(--width-input) + var(--width-button)));
   }
   .input_area{
