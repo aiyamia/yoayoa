@@ -12,7 +12,6 @@
   --height-button:3.5rem;
   --margin-top-button:0;
 
-  --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
   --margin-top-hide:0vw;
   --padding-hide:1rem;
 
@@ -50,9 +49,9 @@ a {
   border-radius: 0.5rem;
   background-color: rgb(75, 76, 78);
   color: aliceblue;
-  font-size:150%;
+  font-size:calc(var(--width-button) / 6);
   letter-spacing:0.2rem;
-  width: var(--width-button);
+  /* width: var(--width-button); */
   height:var(--height-button);
 }
 
@@ -64,7 +63,7 @@ a {
 .input_area input {
   width:var(--width-input);
   height:var(--height-input);
-  font-size:120%;
+  font-size:calc(0.6 * var(--height-input));
   line-height: 1.5rem;
   margin-right: var(--margin-right-input);
   text-indent:0.5vw;
@@ -117,9 +116,15 @@ iframe {
   height: calc(100vh - var(--tab-pad) - 2 * var(--tab-height));
   border: none;
 }
+.head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .info {
-  margin-left: 4.5rem;
-  margin-top: 2rem;
+  font-size: 8vw;
+  transform: rotate(19deg);
 }
 .info h1{
   margin: 0 auto;
@@ -137,9 +142,14 @@ iframe {
   height: var(--eye-size);
   border-radius: calc(0.5 * var(--eye-size));
   box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
 }
+.eye:hover{
+  transform:rotate(-5deg);
+}
+
 .to-hide {
-  max-width: var(--max-width-of-hide);
   overflow: hidden;
   margin:0;
   padding: var(--padding-hide);
@@ -167,7 +177,6 @@ iframe {
     --width-button: 40vw;
 
     --margin-top-hide:5vw;
-    --max-width-of-hide: var(--width-input);
 
     --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + var(--margin-top-button) + 2 * var(--padding-hide) + var(--height-input) + var(--height-button)));
     --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--width-input)));
@@ -195,7 +204,6 @@ iframe {
     --height-button: 10vw;
     --width-button: 40vw;
     --margin-top-hide:5vw;
-    --max-width-of-hide: var(--width-input);
     --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + var(--margin-top-button) + 2 * var(--padding-hide) + var(--height-input) + var(--height-button)));
     --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--width-input)));
   }
@@ -221,7 +229,6 @@ iframe {
     --width-button: 20vw;
 
     --margin-top-hide:5vw;
-    --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
 
     --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + var(--height-button)));
     --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--margin-right-input) + var(--width-input) + var(--width-button)));
@@ -233,17 +240,16 @@ iframe {
 }
 
 
-@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+@media only screen and (min-width: 1400px){
   :root {
-    --eye-size:9vw;
+    --eye-size:8vw;
     
-    --height-input: 5vw;
-    --width-input: 45vw;
-    --height-button: 6vw;
-    --width-button: 15vw;
+    --height-input: 4vw;
+    --width-input: 35vw;
+    --height-button: 4.7vw;
+    --width-button: 12vw;
 
     --margin-top-hide:5vw;
-    --max-width-of-hide: calc(var(--margin-right-input) + var(--width-input) + var(--width-button));
 
     --top-input_area: calc(50vh - 0.5 * (var(--eye-size) + var(--margin-top-hide) + 2 * var(--padding-hide) + var(--height-button)));
     --left-input_area: calc(50vw - 0.5 * (2 * var(--padding-hide) + var(--margin-right-input) + var(--width-input) + var(--width-button)));

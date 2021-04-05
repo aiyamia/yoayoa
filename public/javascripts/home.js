@@ -14,7 +14,7 @@ var light_app = new Vue({
         document.getElementsByClassName("info")[0].style.display="none";
         this.wink();
         const head = document.getElementsByClassName("head")[0];
-        head.style.cssText = "display:flex;justify-content:center;align-items:center;";
+        head.style.cssText = "height:0";
         document.getElementsByClassName('result')[0].style.display = "block";
         const query_string=encodeURI(this.input);
         const url_libgen=`https://libgen.is/search.php?req=${query_string}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def`;
@@ -68,14 +68,13 @@ var light_app = new Vue({
         const input_area = document.getElementsByClassName("input_area")[0];
         input_area.style.cssText = "margin:0;top:17vh;left:95vw;transform: rotate(-130deg);";
       } else {
-        const max_width_of_hide = getComputedStyle(tohide).getPropertyValue('--max-width-of-hide');
         const padding_hide = getComputedStyle(tohide).getPropertyValue('--padding-hide');
         const input_area = document.getElementsByClassName("input_area")[0];
         const top_input_area = getComputedStyle(input_area).getPropertyValue('--top-input_area');
         const left_input_area = getComputedStyle(input_area).getPropertyValue('--left-input_area');
         input_area.style.cssText = `top: ${top_input_area};left: ${left_input_area};`;
         setTimeout(function(){
-          tohide.style.maxWidth = max_width_of_hide;
+          tohide.style.maxWidth = '100vw';
           tohide.style.padding = padding_hide;
           const input = tohide.firstChild
           input.focus()
